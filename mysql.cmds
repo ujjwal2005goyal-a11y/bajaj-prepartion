@@ -1,0 +1,188 @@
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| Ansh_mehta         |
+| information_schema |
+| join_class         |
+| mysql              |
+| performance_schema |
+| sys                |
+| traveldb           |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> create database college;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| Ansh_mehta         |
+| college            |
+| information_schema |
+| join_class         |
+| mysql              |
+| performance_schema |
+| sys                |
+| traveldb           |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use college;
+Database changed
+mysql> select database();
++------------+
+| database() |
++------------+
+| college    |
++------------+
+1 row in set (0.00 sec)
+
+mysql> drop database join_class;
+Query OK, 2 rows affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| Ansh_mehta         |
+| college            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| traveldb           |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use college;
+Database changed
+mysql> create table students(
+    -> id int,
+    -> name varchar(50),
+    -> age int,
+    -> course varchar(50)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_college |
++-------------------+
+| students          |
++-------------------+
+1 row in set (0.01 sec)
+
+mysql> desc students;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | int         | YES  |     | NULL    |       |
+| name   | varchar(50) | YES  |     | NULL    |       |
+| age    | int         | YES  |     | NULL    |       |
+| course | varchar(50) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into students
+    -> values (1,'Neeraj',20,'B Tech');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into students
+    -> vales
+    -> (2,'himanshu',21,'BCA'),
+    -> (3,'Aman',22,'MBA'),
+    -> (4,'Vikas',23,'BBA');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'vales
+(2,'himanshu',21,'BCA'),
+(3,'Aman',22,'MBA'),
+(4,'Vikas',23,'BBA')' at line 2
+mysql> insert into students values (2,'himanshu',21,'BCA'), (3,'Aman',22,'MBA'), (4,'Vikas',23,'BBA');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from students;
++------+----------+------+--------+
+| id   | name     | age  | course |
++------+----------+------+--------+
+|    1 | Neeraj   |   20 | B Tech |
+|    2 | himanshu |   21 | BCA    |
+|    3 | Aman     |   22 | MBA    |
+|    4 | Vikas    |   23 | BBA    |
++------+----------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select name,age from students;
++----------+------+
+| name     | age  |
++----------+------+
+| Neeraj   |   20 |
+| himanshu |   21 |
+| Aman     |   22 |
+| Vikas    |   23 |
++----------+------+
+4 rows in set (0.00 sec)
+
+mysql> select name from studentsl;
+ERROR 1146 (42S02): Table 'college.studentsl' doesn't exist
+mysql> select name from students;
++----------+
+| name     |
++----------+
+| Neeraj   |
+| himanshu |
+| Aman     |
+| Vikas    |
++----------+
+4 rows in set (0.00 sec)
+
+mysql> select 8 from students
+    -> where age >20;
++---+
+| 8 |
++---+
+| 8 |
+| 8 |
+| 8 |
++---+
+3 rows in set (0.00 sec)
+
+mysql> select * from students
+    -> where age>20;
++------+----------+------+--------+
+| id   | name     | age  | course |
++------+----------+------+--------+
+|    2 | himanshu |   21 | BCA    |
+|    3 | Aman     |   22 | MBA    |
+|    4 | Vikas    |   23 | BBA    |
++------+----------+------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from students where course='BCA';
++------+----------+------+--------+
+| id   | name     | age  | course |
++------+----------+------+--------+
+|    2 | himanshu |   21 | BCA    |
++------+----------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from students
+    -> where age>20 AND course='BCA';
++------+----------+------+--------+
+| id   | name     | age  | course |
++------+----------+------+--------+
+|    2 | himanshu |   21 | BCA    |
++------+----------+------+--------+
+1 row in set (0.00 sec)
+
+mysql>
