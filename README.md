@@ -165,7 +165,7 @@ For every problem, I focus on:
 
 # 🤝 Connect With Me
 
-### 👨‍💻 Armaanpreet Singh
+### 👨‍💻 Ujjwal Goyal
 
 * Passionate about DSA, Web Development & Software Engineering
 * Consistently learning and building projects
